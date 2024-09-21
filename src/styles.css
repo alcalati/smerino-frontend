@@ -1,0 +1,75 @@
+div {
+  padding: 20px;
+  margin: auto;
+  max-width: 400px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Color de fondo */
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+}
+
+.form-container {
+  background-color: #fff; /* Color de fondo del formulario */
+  padding: 20px;
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra del formulario */
+  width: 300px; /* Ancho fijo */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+.input-group {
+  margin-bottom: 15px; /* Espacio entre los campos de entrada */
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px; /* Espacio debajo de la etiqueta */
+}
+
+.input-group input {
+  width: 100%; /* Ancho completo */
+  padding: 10px;
+  border: 1px solid #ccc; /* Borde de los campos de entrada */
+  border-radius: 3px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+.button {
+  width: 100%; /* Botón de ancho completo */
+  padding: 10px;
+  background-color: #28a745; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  border: none; /* Sin borde */
+  border-radius: 3px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+.button:hover {
+  background-color: #218838; /* Color de fondo al pasar el ratón */
+}
+
+.message {
+  color: green;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
