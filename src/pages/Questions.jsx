@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../questions.css';
 
 const Questions = () => {
   const categories = [
@@ -24,7 +25,7 @@ const Questions = () => {
     const currentCategoryName = categories[currentCategory];
 
     // Enviar respuestas al backend para la categoría actual
-    await axios.post('/api/user/first-login-answers', {
+    await axios.post(`${process.env.REACT_APP_API_URL}/auth/first-login-answers`, {
       category: currentCategoryName,
       answers: answers,
     });
@@ -40,7 +41,7 @@ const Questions = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
       <h2>{categories[currentCategory]}</h2>
       <div>
         {/* Datos personales */}
