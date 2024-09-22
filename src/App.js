@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import VerifyEmail from './pages/VerifyEmail';
 import EmailVerified from './pages/EmailVerified';
+import Questions from './pages/Questions';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/verify-email/:token" element={<VerifyEmail />} />
+        <Route path="/questions" element={<Questions />} />
       </Routes>
     </Router>
   );
