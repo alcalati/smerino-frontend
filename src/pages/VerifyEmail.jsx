@@ -10,14 +10,15 @@ const VerifyEmail = () => {
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        // Realiza la solicitud al backend para verificar el token
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/verify/${token}`);
         setMessage(response.data.message);
       } catch (error) {
+        // Manejo de error mejorado
+        console.error('Error en la solicitud de verificación:', error);
         if (error.response) {
-          setMessage(error.response.data.message); // Mensaje desde el backend
+          setMessage(`Error: ${error.response.data.message}`); // Mensaje del backend
         } else {
-          setMessage('Error al verificar el correo.');
+          setMessage('Error al verificar el correo.'); // Mensaje genérico
         }
       }
     };
