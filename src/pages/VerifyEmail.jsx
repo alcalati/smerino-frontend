@@ -13,7 +13,6 @@ const VerifyEmail = () => {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/verify/${token}`);
         setMessage(response.data.message);
       } catch (error) {
-        // Manejo de error mejorado
         console.error('Error en la solicitud de verificación:', error);
         if (error.response) {
           setMessage(`Error: ${error.response.data.message}`); // Mensaje del backend
@@ -23,8 +22,11 @@ const VerifyEmail = () => {
       }
     };
 
-    verifyEmail();
+    if (token) { // Asegúrate de que el token esté presente antes de hacer la llamada
+      verifyEmail();
+    }
   }, [token]);
+
 
   return (
     <div className="container">
