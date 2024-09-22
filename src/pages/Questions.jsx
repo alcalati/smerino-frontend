@@ -14,29 +14,68 @@ const Questions = () => {
     'Datos de Interés Adicional',
   ];
 
+  // Estado para la categoría actual
   const [currentCategory, setCurrentCategory] = useState(0);
-  const [answers, setAnswers] = useState({});
+
+  // Estado para almacenar respuestas por categoría
+  const [answers, setAnswers] = useState({
+    personalData: {},
+    physiologicalPathological: {},
+    habits: {},
+    generalQuestions: {},
+    food: {},
+    training: {},
+    caseDescription: {},
+    additionalInfo: {}
+  });
 
   const handleAnswerChange = (question, value) => {
-    setAnswers({ ...answers, [question]: value });
+    // Copiamos las respuestas actuales de la categoría actual y actualizamos la nueva respuesta
+    const categoryKey = getCategoryKey(currentCategory); // Función para obtener el key
+    setAnswers({
+      ...answers,
+      [categoryKey]: {
+        ...answers[categoryKey],
+        [question]: value
+      }
+    });
+  };
+
+  // Función para obtener el nombre del objeto de cada categoría según el índice
+  const getCategoryKey = (index) => {
+    switch(index) {
+      case 0: return 'personalData';
+      case 1: return 'physiologicalPathological';
+      case 2: return 'habits';
+      case 3: return 'generalQuestions';
+      case 4: return 'food';
+      case 5: return 'training';
+      case 6: return 'caseDescription';
+      case 7: return 'additionalInfo';
+      default: return '';
+    }
   };
 
   const handleNext = async () => {
     const currentCategoryName = categories[currentCategory];
+    const categoryKey = getCategoryKey(currentCategory);
 
-    // Enviar respuestas al backend para la categoría actual
-    await axios.post(`${process.env.REACT_APP_API_URL}/auth/first-login-answers`, {
-      category: currentCategoryName,
-      answers: answers,
-    });
+    try {
+      // Enviar respuestas de la categoría actual al backend
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/first-login-answers`, {
+        category: currentCategoryName,
+        answers: answers[categoryKey], // Solo enviamos respuestas de la categoría actual
+      });
 
-    // Reiniciar respuestas y avanzar a la siguiente categoría
-    setAnswers({});
-    if (currentCategory < categories.length - 1) {
-      setCurrentCategory(currentCategory + 1);
-    } else {
-      // Redirigir al perfil una vez completado todo
-      window.location.href = '/profile';
+      // Pasar a la siguiente categoría
+      if (currentCategory < categories.length - 1) {
+        setCurrentCategory(currentCategory + 1);
+      } else {
+        // Redirigir al perfil cuando se haya completado todo
+        window.location.href = '/profile';
+      }
+    } catch (error) {
+      console.error('Error al enviar las respuestas:', error);
     }
   };
 
@@ -50,16 +89,19 @@ const Questions = () => {
             <label>Fecha de nacimiento:</label>
             <input
               type="date"
+              value={answers.personalData.birthDate || ''}
               onChange={(e) => handleAnswerChange('birthDate', e.target.value)}
             />
             <label>Altura (cm):</label>
             <input
               type="number"
+              value={answers.personalData.height || ''}
               onChange={(e) => handleAnswerChange('height', e.target.value)}
             />
             <label>Peso (kg):</label>
             <input
               type="number"
+              value={answers.personalData.weight || ''}
               onChange={(e) => handleAnswerChange('weight', e.target.value)}
             />
           </>
@@ -70,38 +112,47 @@ const Questions = () => {
           <>
             <label>Estado de forma a lo largo de tu vida:</label>
             <textarea
+              value={answers.physiologicalPathological.fitnessStatus || ''}
               onChange={(e) => handleAnswerChange('fitnessStatus', e.target.value)}
             />
             <label>Enfermedades actuales:</label>
             <textarea
+              value={answers.physiologicalPathological.currentDiseases || ''}
               onChange={(e) => handleAnswerChange('currentDiseases', e.target.value)}
             />
             <label>Medicación:</label>
             <textarea
+              value={answers.physiologicalPathological.medication || ''}
               onChange={(e) => handleAnswerChange('medication', e.target.value)}
             />
             <label>Enfermedades relevantes pasadas:</label>
             <textarea
+              value={answers.physiologicalPathological.pastDiseases || ''}
               onChange={(e) => handleAnswerChange('pastDiseases', e.target.value)}
             />
             <label>Alergias o intolerancias alimentarias:</label>
             <textarea
+              value={answers.physiologicalPathological.allergies || ''}
               onChange={(e) => handleAnswerChange('allergies', e.target.value)}
             />
             <label>Operaciones:</label>
             <textarea
+              value={answers.physiologicalPathological.surgeries || ''}
               onChange={(e) => handleAnswerChange('surgeries', e.target.value)}
             />
             <label>Dolores o molestias habituales:</label>
             <textarea
+              value={answers.physiologicalPathological.habitualPains || ''}
               onChange={(e) => handleAnswerChange('habitualPains', e.target.value)}
             />
             <label>¿Cuándo fue tu última analítica?</label>
             <textarea
+              value={answers.physiologicalPathological.lastAnalysis || ''}
               onChange={(e) => handleAnswerChange('lastAnalysis', e.target.value)}
             />
             <label>¿Alguna alteración clínica a tener en cuenta?</label>
             <textarea
+              value={answers.physiologicalPathological.clinicalAlterations || ''}
               onChange={(e) => handleAnswerChange('clinicalAlterations', e.target.value)}
             />
           </>
