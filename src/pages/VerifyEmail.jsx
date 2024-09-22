@@ -34,9 +34,7 @@ useEffect(() => {
 
   return (
     <div className="container">
-      <h2>Verificación de Correo</h2>
-      <p>{message}</p>
-      <button onClick={() => navigate('/login')}>Iniciar Sesión</button>
+      <h2>Verificando Correo...</h2>
     </div>
   );
 };
