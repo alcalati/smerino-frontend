@@ -10,12 +10,14 @@ const VerifyEmail = () => {
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/verify/${token}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/verify-email/${token}`);
+
         setMessage(response.data.message);
         setTimeout(() => {
           navigate('/email-verified');
         }, 2000);
       } catch (error) {
+        console.error('Error al verificar el correo:', error.response ? error.response.data : error.message);
         setMessage('Error al verificar el correo.');
       }
     };
