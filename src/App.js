@@ -17,7 +17,7 @@ const App = () => {
         <Route path="/register" element={<LoginRegisterForm isLogin={false} />} />
         <Route path="/email-verified" element={<EmailVerified />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/verify/:token" element={<VerifyEmail />} />
+        <Route path="/verify-email/:token" element={<VerifyEmail />} />
       </Routes>
     </Router>
   );
