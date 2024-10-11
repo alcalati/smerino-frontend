@@ -1,4 +1,3 @@
-// EmailVerified.jsx
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,12 +5,10 @@ const EmailVerified = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Redirigir al inicio de sesión después de 3 segundos
     const timer = setTimeout(() => {
       navigate('/login');
     }, 5000);
 
-    // Limpiar el timer si el componente se desmonta
     return () => clearTimeout(timer);
   }, [navigate]);
 
