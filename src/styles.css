@@ -1,89 +1,331 @@
-/* styles.css */
+/* Estilo general */
+:root{
+  --primaryColor: #000;
+  --secundaryColor: #121212;
+  --myWhite: #C3D9FB;
+  --myBlack: #2E2E2E;
+}
 
-/* Reset básico para evitar inconsistencias */
-* {
+#root {
+  width: 100%;
+  height: 100%;
+  font-family: 'Montserrat', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+
+  background-color: white;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Estilos para el body */
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0; /* Fondo gris claro */
-  color: #333; /* Texto gris oscuro */
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  overflow-x: hidden;
 }
 
-/* Estilos del contenedor principal */
-.container {
-  max-width: 1200px; /* Ancho máximo para pantallas grandes */
-  margin: 0 auto; /* Centrar en la pantalla */
-  padding: 1rem; /* Espaciado interno */
-}
 
-/* Estilos del header */
-header {
-  background-color: #e0e0e0; /* Fondo gris */
-  padding: 1rem; /* Espaciado interno */
-  text-align: center;
-}
-
-/* Estilos del modal */
-.modal {
-  background-color: #fff; /* Fondo blanco para el modal */
-  padding: 2rem; /* Espaciado interno */
-  border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
-}
-
-/* Estilos del formulario */
 form {
   display: flex;
-  flex-direction: column; /* Disposición vertical */
+  flex-direction: column;
+  gap: 15px; /* Espacio más amplio entre los elementos */
+  max-width: 100%;
+  margin: 20px;
+  padding: 25px;
+  background-color: #fff; /* Fondo blanco del formulario */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border: 1px solid #ddd; /* Borde gris claro */
 }
 
-/* Estilos de los inputs */
-input {
-  margin: 0.5rem 0; /* Espaciado entre inputs */
-  padding: 0.5rem; /* Espaciado interno */
-  border: 1px solid #ccc; /* Borde gris */
-  border-radius: 4px; /* Bordes redondeados */
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #000; /* Color negro para las etiquetas */
 }
 
-/* Estilos de los botones */
+input, select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #fafafa; /* Fondo gris muy claro */
+  color: #333; /* Texto en gris oscuro */
+}
+
+input:focus, select:focus {
+  border-color: #888; /* Color de borde más oscuro al hacer foco */
+  outline: none; /* Elimina el borde azul por defecto en inputs */
+}
+
 button {
-  background-color: #a0a0a0; /* Fondo gris medio */
-  color: white; /* Texto blanco */
-  padding: 0.5rem; /* Espaciado interno */
-  border: none; /* Sin borde */
-  border-radius: 4px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  padding: 12px;
+  background-color: #333; /* Botón en negro */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 button:hover {
-  background-color: #888; /* Cambia el fondo al pasar el ratón */
+  background-color: #555; /* Botón gris oscuro al pasar el ratón */
 }
 
-/* Estilos de la imagen en la página de inicio */
+button:disabled {
+  background-color: #888; /* Gris medio para botones deshabilitados */
+  cursor: not-allowed;
+}
+
+/* Estilo modal */
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%; /* Aumenta el ancho para dispositivos móviles */
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+div {
+  width: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: var(--secundaryColor);
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: var(--secundaryColor);
+}
+
+h1 {
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 12px;
+}
+
+h2 {
+  font-size: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
+  font-size: 2em;
+  color:var(--primaryColor)
+}
+
+h4 {
+  font-size: 1.5em;
+  color:var(--primaryColor)
+}
+
+p {
+  font-size: 1.2em;
+}
+
+.littleText {
+  font-size: 0.8em;
+}
+
+li {
+  font-size: 1em;
+}
+
+button {
+  border:1.75px solid transparent;
+  border-color:var(--primaryColor);
+  padding: 0.3em 0.6em;
+  border-radius: 50px !important;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: white;
+  color:var(--myBlack);
+  cursor: pointer;
+   transition: color 0.25s;
+}
+
+button:hover {
+  color:white;
+  background-color: var(--primaryColor);
+}
+
+.blueButton {
+  padding: 0.3em 0.6em;
+  border-radius: 50px !important;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--primaryColor);
+  color:white;
+  cursor: pointer;
+   transition: color 0.25s;
+}
+
+blueButton:hover {
+  color:white;
+  background-color: var(--myBlack);
+}
+
+.minimalButton {
+  border:0px solid transparent !important;
+  padding: 0.3em 0.6em;
+  border-radius: 0px !important;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: white;
+  color:var(--myBlack);
+  cursor: pointer;
+  transition: color 0.25s;
+}
+
+.minimalButton {
+  border: 0px solid transparent !important;
+  padding: 0.3em 0.6em;
+  border-radius: 0px !important;
+  font-size: 0.7em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: white;
+  color: var(--myBlack);
+  cursor: pointer;
+  transition: color 0.25s, border-bottom-color 0.25s;
+}
+
+.minimalButton:hover,
+.minimalButton:focus {
+  color: white;
+  background-color: var(--primaryColor);
+  border: 0px solid transparent;
+  outline: none;
+}
+
+.programButton {
+  color: var(--myBlack);
+  font-size: 0.9em !important;
+}
+
+.programButton:hover {
+  color: var(--primaryColor);
+  font-size: 0.9em !important;
+}
+
+
+/* Estilos para el modal */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Color de fondo oscuro */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  z-index: 1000;
+  font: inherit;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.custom-slot-label {
+  width: 100px; /* Ajusta el ancho según sea necesario */
+  text-align: right;
+  padding-right: 10px; /* Añadir espaciado entre las horas y los eventos */
+  font-size: 14px; /* Tamaño de fuente ajustab */
+}
+
+/* Estilo de la imagen */
 .home-image {
   max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
-  height: auto; /* Mantiene la proporción de la imagen */
+  height: auto;
+  border-radius: 10px; /* Bordes redondeados en la imagen */
 }
 
-/* Responsive */
+/* Estilos Responsive */
 @media (min-width: 768px) {
   /* Estilos para tabletas y pantallas más grandes */
   header {
       display: flex;
-      justify-content: space-between; /* Espacio entre elementos */
-      align-items: center; /* Centra verticalmente */
+      justify-content: space-between;
+      align-items: center;
   }
+
   form {
-      flex-direction: row; /* Cambia a disposición horizontal */
-      flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+      max-width: 400px; /* Ancho máximo para pantallas más grandes */
+      margin: auto; /* Centra el formulario */
   }
-  input {
-      flex: 1; /* Hace que los inputs ocupen el espacio disponible */
-      margin: 0.5rem; /* Espaciado entre inputs */
+
+  .modal-content {
+      max-width: 600px; /* Ensancha el modal en pantallas más grandes */
+  }
+
+  button {
+      font-size: 18px; /* Botones más grandes en pantallas grandes */
   }
 }
